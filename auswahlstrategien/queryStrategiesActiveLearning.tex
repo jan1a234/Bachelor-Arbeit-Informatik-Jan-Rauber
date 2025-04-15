@@ -1,0 +1,402 @@
+\documentclass{article}
+
+% Zeilenumbruch, Umlaute etc.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+
+% Mathe & Symbole
+\usepackage{amsmath}
+\usepackage{amssymb}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% Farben und Listings-Paket
+\usepackage{xcolor}
+\usepackage{listings}
+
+% Code-Formatierung
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	breaklines=true,
+	frame=single,
+	tabsize=2
+}
+
+% Grafiken
+\usepackage{graphicx}
+
+% Zitate, Hyperlinks und Literaturverwaltung
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage[
+backend=biber,
+style=numeric,
+doi=true,
+url=true
+]{biblatex}
+\addbibresource{document.bib}
+
+
+
+
+% Start the document
+\begin{document}
+
+
+\section{Zielsetzung der Arbeit}
+
+
+Ziel dieser Bachelorarbeit ist es, Methoden des passiven und aktiven Lernens in der Bildklassifikation systematisch zu untersuchen und zu vergleichen, um den manuellen Aufwand bei der Generierung von Trainingsdaten signifikant zu reduzieren. Als erster Schritt wird ein balancierter Datensatz (MNIST) verwendet, um ein passives Lernverfahren zu trainieren und dessen erzielte Klassifikationsleistung als Referenzwert (Baseline) festzulegen. Darauf aufbauend werden sämtliche Auswahlstrategien (Query-Strategien) für aktives Lernen, welche durch die Python-Bibliothek modAL bereitgestellt werden, implementiert und evaluiert. Ziel ist es, mittels dieser Strategien die Referenzleistung des passiven Lernens hinsichtlich Genauigkeit (Accuracy) zu erreichen oder idealerweise zu übertreffen.
+
+Nach erfolgreicher Evaluation auf dem balancierten Datensatz erfolgt eine Übertragung der Methodik auf einen unbalancierten, realitätsnahen Datensatz, der Dachmaterialien aus Luftbildern umfasst. Hierbei soll analysiert werden, wie sich unterschiedliche Strategien des aktiven Lernens bei ungleicher Datenverteilung bewähren und welche Ansätze sich besonders effektiv für die Optimierung der Datenaufbereitung eignen. Die Leistungsfähigkeit der Modelle wird erneut anhand ihrer Genauigkeit miteinander verglichen.
+
+Durch die Identifikation und Implementierung besonders effizienter aktiver Lernmethoden soll langfristig der Aufwand zur manuellen Annotation und Generierung von Trainingsdaten reduziert werden. Dies ist besonders relevant für kritische Anwendungen wie die automatisierte Erkennung von Dachmaterialien in Luftbildern, da hierdurch sowohl Kosten gespart als auch eine zügigere Entwicklung leistungsfähiger und zuverlässiger Klassifikationsmodelle ermöglicht wird.
+
+\section{Theoretische Grundlagen}
+\subsection{Wahrscheinlichkeitsberechnung bei Klassifikatoren}
+
+\paragraph{Support Vector Machines (SVM)}
+SVMs sind margin-basierte Klassifikationsmodelle, die eine trennende Hyper-Ebene mit maximalem Abstand (Margin) zu den Datenpunkten suchen \cite{cortes1995support}. Klassische SVMs liefern Entscheidungswerte \(f(x)\), jedoch keine Wahrscheinlichkeiten. 
+
+\textbf{Wahrscheinlichkeitsberechnung:} Zur Erzeugung probabilistischer Vorhersagen wird oft \emph{Platt Scaling} eingesetzt. Dabei wird eine logistische Funktion \( \sigma(f(x)) = \frac{1}{1 + \exp(Af(x) + B)} \) auf die SVM-Ausgabe angepasst. Die Parameter \(A\) und \(B\) werden durch Maximum-Likelihood auf einem Validierungsdatensatz bestimmt\cite{Lin2007}.
+
+\paragraph{Random Forests}
+Ein Random Forest ist ein Ensemble von Entscheidungsbäumen \cite{Breiman2001}. Jeder Baum klassifiziert unabhängig, die finale Entscheidung erfolgt durch Mehrheitsvotum.
+
+\textbf{Wahrscheinlichkeitsberechnung:} Die Wahrscheinlichkeit einer Klasse \(k\) ergibt sich als Anteil der Bäume, die \(k\) vorhersagen: 
+\[ \hat{P}(Y=k \mid x) = \frac{1}{T} \sum_{t=1}^T \mathbf{1}\{ \text{Baum}_t(x) = k \} \]
+Diese Wahrscheinlichkeiten können kalibriert werden, z.\,B. über isotone Regression.
+
+\paragraph{Neuronale Netze}
+Neuronale Netze bestehen aus mehreren Schichten mit gewichteten Verbindungen \cite{LeCun2015}. Für Klassifikation wird in der Ausgabeschicht meist die \emph{Softmax}-Funktion verwendet:
+\[ \sigma(z)_i = \frac{\exp(z_i)}{\sum_{j=1}^K \exp(z_j)} \]
+
+\textbf{Wahrscheinlichkeitsberechnung:} Softmax erzeugt eine Wahrscheinlichkeitsverteilung über \(K\) Klassen \cite{Bridle1990}. Das Netz wird mit Kreuzentropie-Loss trainiert, was einer Maximum-Likelihood-Schätzung entspricht. Für binäre Klassifikation reduziert sich dies zur Sigmoid-Funktion.
+
+\paragraph{Logistische Regression}
+Die logistische Regression ist ein lineares Modell zur Wahrscheinlichkeitsvorhersage \cite{Cox1958}. 
+
+\textbf{Wahrscheinlichkeitsberechnung:} Die Wahrscheinlichkeit ergibt sich aus der Sigmoid-Funktion:
+\[ P(Y=1 \mid x) = \frac{1}{1 + \exp(-w^T x - b)} \]
+Für Mehrklassenprobleme wird die Softmax-Variante verwendet. Die Parameter werden über Maximum-Likelihood geschätzt.
+
+\paragraph{Naive Bayes}
+Naive Bayes basiert auf dem Bayes-Theorem mit der Annahme bedingter Unabhängigkeit der Merkmale \cite{zhang2004naive}.
+
+\textbf{Wahrscheinlichkeitsberechnung:} Für jede Klasse wird berechnet:
+\[ P(C=k \mid x) = \frac{P(C=k) \prod_j P(x_j \mid C=k)}{\sum_{l} P(C=l) \prod_j P(x_j \mid C=l)} \]
+Diese Formel ergibt sich direkt aus dem Bayes-Theorem. Wahrscheinlichkeiten sind kalibriert, aber sensitiv gegenüber Abhängigkeitsverletzungen\cite{Gohari2023}.
+\subsection{Unterstützte Klassifikationsmodelle in modAL}
+
+\paragraph{Logistische Regression:}
+\begin{itemize}
+	\item \textbf{Klassifikatortyp:} Linearer Klassifikator, der eine logistische Funktion (Sigmoid/Softmax) verwendet, um Wahrscheinlichkeiten für Klassen zu schätzen. Dieses statistische Regressionsmodell eignet sich für binäre und multiklassige Klassifikationsaufgaben und liefert direkt kalibrierte Klassen-Wahrscheinlichkeiten.
+	\item \textbf{Kompatibilität mit modAL:} Vollständig kompatibel mit Unsicherheits-basierten Abfragestrategien (\emph{uncertainty sampling}), da \texttt{predict\_proba} vorhanden ist und somit Metriken wie geringste Sicherheit, kleinste Margin oder maximale Entropie direkt berechnet werden können. Ebenso problemlos in \emph{Query-by-Committee}-Szenarien einsetzbar, da mehrere logistische Regressionsmodelle als Komitee fungieren können.
+	\item \textbf{Einschränkungen:} Keine besonderen Einschränkungen – die logistische Regression erfordert lediglich linear trennbare Merkmale für optimale Leistung. Da sie probabilistische Ausgaben liefert, erfüllt sie die Voraussetzungen aller modAL-Strategien (für Multiklassen klassisch via One-vs-Rest oder Softmax-Regression erweitert)
+	\cite{Dreiseitl2002}.
+\end{itemize}
+
+\paragraph{Support Vector Machine (SVM):}
+\begin{itemize}
+	\item \textbf{Klassifikatortyp:} Margin-basierter Klassifikator (kernbasiert möglich), der optimale Trennhyperflächen zwischen Klassen findet. Klassisch für binäre Klassifikation entwickelt, kann aber mittels One-vs-One oder One-vs-Rest auf Mehrklassenprobleme erweitert werden.
+	\item \textbf{Kompatibilität mit modAL:} Grundsätzlich kompatibel mit allen Abfragestrategien, sofern ein probabilistisches Ausgabeformat verfügbar ist. Für Unsicherheits-Abfragen sollte die SVM so konfiguriert sein, dass sie Wahrscheinlichkeiten liefert (in \texttt{scikit-learn} mittels \texttt{probability=True}), da Strategien wie Least Confidence oder Entropy eine \texttt{predict\_proba}-Methode erfordern. Ohne probabilistische Ausgabe kann eine SVM dennoch in \emph{Query-by-Committee} verwendet werden, indem verschiedene SVM-Modelle als Komitee auf Basis ihrer Diskriminanzfunktion/Labels divergieren.
+	\item \textbf{Einschränkungen:} SVMs liefern von Haus aus keine Wahrscheinlichkeiten, sondern Entscheidungswerte; die Nutzung mit Unsicherheitsmaßen erfordert daher eine nachträgliche Platt-Kalibrierung für \texttt{predict\_proba}. Dies kann zusätzlichen Rechenaufwand bedeuten
+	\cite{Cortes1995}.
+\end{itemize}
+
+\paragraph{Random-Forest-Klassifikator:}
+\begin{itemize}
+	\item \textbf{Klassifikatortyp:} Ensemble-Verfahren auf Basis vieler Entscheidungsbäume im Bagging-Verfahren. Der Random Forest ist ein nicht-linearer Klassifikator, der mittels Mehrheitsabstimmung der Bäume entscheidet und dabei interne Schätzungen der Klassenwahrscheinlichkeiten über die Baum-Anteile liefert.
+	\item \textbf{Kompatibilität mit modAL:} Sehr gut kompatibel mit Unsicherheitsstrategien, da \texttt{predict\_proba} standardmäßig implementiert ist (die Wahrscheinlichkeit ergibt sich aus dem Anteil der Bäume, die eine Klasse vorhersagen). Damit können Least-Confidence, Margin und Entropie direkt angewendet werden. Ebenfalls kann ein Random Forest Teil eines Komitees sein oder selbst als Komitee betrachtet werden.
+	\item \textbf{Einschränkungen:} Keine speziellen Einschränkungen hinsichtlich modAL – der Random Forest erfüllt die Anforderungen (probabilistische Ausgabe) und ist austauschbar mit anderen Klassifikatoren. Lediglich die Trainingszeit kann mit steigender Baumzahl wachsen
+	\cite{Breiman2001}.
+\end{itemize}
+
+\paragraph{k-nächste-Nachbarn (kNN):}
+\begin{itemize}
+	\item \textbf{Klassifikatortyp:} Instanzbasierter Klassifikator, der einen neuen Datenpunkt basierend auf den Mehrheitsklassen seiner $k$ nächsten Nachbarn im Merkmalsraum klassifiziert. Er ist ein nicht-parametrisches Verfahren und erzeugt implizit Wahrscheinlichkeiten durch relative Häufigkeiten der Nachbarn pro Klasse.
+	\item \textbf{Kompatibilität mit modAL:} Kompatibel mit Unsicherheits-Abfragestrategien, da der kNN-Klassifikator in \texttt{scikit-learn} \texttt{predict\_proba} bietet. Somit lassen sich Uncertainty-Metriken direkt berechnen. Auch in \emph{Query-by-Committee} einsetzbar, z.B. durch Variation von $k$ oder Gewichtungsstrategien.
+	\item \textbf{Einschränkungen:} Keine besonderen Einschränkungen – Wahrscheinlichkeiten sind diskret (Vielfache von $1/k$), was bei kleinen $k$ zu groben Abstufungen führen kann. Bei großen Datensätzen ggf. langsamer
+	\cite{Cover1967}.
+\end{itemize}
+
+\paragraph{Neuronales Netzwerk:}
+\begin{itemize}
+	\item \textbf{Klassifikatortyp:} Mehrschichtige künstliche neuronale Netze (z.B. Perzeptron-Netze oder tiefe Netze) sind leistungsfähige nicht-lineare Klassifikatoren. Sie lernen komplexe Entscheidungsgrenzen durch Aktivierungsfunktionen (ReLU, Tanh) und geben mittels Softmax Wahrscheinlichkeitsverteilungen über Klassen aus.
+	\item \textbf{Kompatibilität mit modAL:} Über \texttt{sklearn}-ähnliche Wrapper wie \texttt{KerasClassifier} oder \texttt{skorch.NeuralNetClassifier} integrierbar. Damit sind alle modAL-Abfragestrategien direkt nutzbar. Auch \emph{Query-by-Committee} ist durch Variation der Initialisierung oder Architektur möglich.
+	\item \textbf{Einschränkungen:} Modell muss in modAL-Struktur eingebunden sein (\texttt{fit}, \texttt{predict}, \texttt{predict\_proba}). Höherer Trainingsaufwand pro Iteration
+	\cite{LeCun2015}.
+\end{itemize}
+
+\subsection{Passives Lernen} (engl. \emph{passive learning}) bezeichnet im Kontext der Bildverarbeitung das klassische Vorgehen, bei dem ein Modell auf einem fest vorgegebenen, in der Regel vorab vollständig annotierten Datensatz trainiert wird, ohne dass der Lernalgorithmus die Auswahl oder Zusammensetzung der Trainingsdaten beeinflusst. Das System lernt also „passiv“ aus den bereitgestellten Bilddaten und muss alle relevanten Merkmale eigenständig aus dieser Datenmenge extrahieren. Im Gegensatz dazu kann ein \textbf{Active-Learning}-Verfahren (aktives Lernen) aktiv entscheiden, welche neuen Datenpunkte (etwa unbeschriftete Bilder) als Nächstes zu annotieren sind, um möglichst informative Beispiele zu erhalten \cite{Fischer1999}. Passive Lernverfahren sind folglich darauf angewiesen, dass der verfügbare Datensatz hinreichend groß und repräsentativ für das zugrunde liegende Problem ist, da das Modell seine Hypothesen nicht durch gezieltes Nachfragen oder experimentelles Sammeln weiterer Daten überprüfen kann – die Güte der gelernten Zusammenhänge wird stattdessen ausschließlich mittels Auswertung der vorhandenen (bzw. separat bereitgestellten) Validierungs- und Testdaten beurteilt. In der Praxis erfordert passives Lernen daher oft einen höheren Annotierungsaufwand: Ein passiv lernendes Modell benötigt meist deutlich mehr gelabelte Trainingsbilder, um eine vergleichbare Modellgüte zu erreichen, da es auch viele redundante oder wenig informative Instanzen mitlernen muss – wohingegen ein aktiver Lernansatz durch selektive Datenwahl den Label-Aufwand reduzieren kann \cite{Tharwat2023}.
+
+\subsection{Active Learning im Kontext der Bildverarbeitung}
+
+Active Learning (deutsch: \emph{aktives Lernen}) ist ein Ansatz des überwachten maschinellen Lernens, bei dem das Lernsystem selbst aktiv auswählt, welche der unbeschrifteten Daten als Nächstes von einem Experten (dem \emph{Orakel}) annotiert werden sollen. Der Grundgedanke besteht darin, dass ein Modell mit deutlich weniger Trainingsdaten eine vergleichbare Genauigkeit erreichen kann, wenn es strategisch bestimmt, aus welchen Daten es lernt. 
+
+Durch die iterativ vom Modell angeforderten \emph{Queries} (typischerweise einzelne noch ungelabelte Datenpunkte) soll die Informationsausbeute maximiert werden, sodass die manuellen Labeling-Kosten minimiert werden, ohne die Vorhersagegüte wesentlich zu beeinträchtigen. 
+
+Insbesondere in der Bildverarbeitung ergeben sich hier große Effizienzgewinne, da in modernen Anwendungen meist sehr viele Bilddaten verfügbar sind, deren manuelle Annotation jedoch aufwändig und teuer ist. Active Learning erlaubt es, gezielt diejenigen Bilder aus einem großen Pool unannotierter Daten auszuwählen, die für das Modell am informativsten sind – etwa weil das aktuelle Modell bei ihnen besonders unsicher ist oder weil sie repräsentative neue Muster enthalten. 
+
+Nach jeder Annotierungsrunde wird das Modell mit den neu gelabelten Bildern erneut trainiert, sodass sich sein Leistungsvermögen sukzessive verbessert. Auf diese Weise kann ein lernendes Bildverarbeitungssystem bereits mit einem Bruchteil der sonst nötigen Trainingsbeispiele eine hohe Genauigkeit erreichen, da es sich vorrangig auf die wichtigsten und schwierigsten Fälle konzentriert. 
+
+Dies führt insgesamt zu einer deutlichen Reduzierung des Beschriftungsaufwands bei nur geringem Verlust an Modellgüte \cite{Roeder2013}.
+
+	
+	
+	
+	% Create a new 1st level heading
+	\subsection{Auswahlstrategien bei Active \\Machine Learning}
+	Im Laufe der Zeit wurden verschiedene strategien entwickelt um die Informationsgüte unbeschrifteter Beispiele abzuschätzen \cite{Lewis1994}. Nur die Beispiele mit der höchsten Informationsgüte werden für das Orakel zur Annotierung ausgewählt um das Machine Learning Modell effizient zu trainieren. Nachfolgend werden verschiedene Auswahlstrategien erörtert.  
+	\subsubsection{Uncertainty Sampling}
+	Beim Uncertainty Sampling wählt das Modell Datenpunkte aus, bei denen sich das Modell am unsichersten über die korrekte Klasse ist. Uncertainty Sampling ist einfach zu implementieren. Typische Quantifizierungen der Unsicherheit sind Least Confidence, Margin Sampling und Entropy Sampling \cite{Lewis1994}. 
+	
+	\paragraph{Least Confidence}
+	Hierbei wählt das Modell den Datenpunkt zur Annotierung, dessen höchstwahrscheinliche Klasse die niedrigste Wahrscheinlichkeit besitzt \cite{Settles2008}.
+	
+	\textbf{Beispiel:}  
+	Betrachte ein Modell zur Erkennung von Dachmaterialien, welches für 100 ungelabelte Bilder die Klassenwahrscheinlichkeiten schätzen soll. Für Bild $A$ berechnet das Modell folgende Wahrscheinlichkeiten:
+	
+	\begin{equation}
+		P(\mathrm{Ziegel}) = 0{,}33,\quad P(\mathrm{Beton}) = 0{,}33,\quad P(\mathrm{Schiefer}) = 0{,}34
+	\end{equation}
+	
+	Hier liegt die Top-Wahrscheinlichkeit bei 34\,\%. Wenn das Modell für alle anderen Bilder eine höhere Top-Wahrscheinlichkeit generiert, erfüllt Bild $A$ das \textit{Least Confidence}-Kriterium und wird zur Annotierung durch das Orakel ausgewählt.
+	
+	Die Klassenwahrscheinlichkeit kann über folgende Methoden berechnet werden:
+	\begin{itemize}
+		\item Softmax-Funktion
+		\item logistische Funktionen
+		\item Häufigkeitsstatistiken
+		\item Kalibrierungsmethoden
+	\end{itemize}
+	
+	\paragraph{Margin Sampling}
+	Bei \textit{Margin Sampling} wird die Unsicherheit eines Modells daran gemessen, wie knapp das Modell zwischen den beiden wahrscheinlichsten Klassen unterscheidet \cite{Scheffer2001}.
+	
+	Das Modell berechnet hierfür zunächst für jede Klasse eine Wahrscheinlichkeit (zum Beispiel über eine Softmax-Funktion oder andere Wahrscheinlichkeitsmodelle), sortiert diese anschließend nach absteigender Wahrscheinlichkeit und berechnet die \textit{Margin} zwischen der erstplatzierten und der zweitplatzierten Klasse:
+	
+	\begin{equation}
+		\text{Margin} = P(\text{Klasse}_1) - P(\text{Klasse}_2)
+	\end{equation}
+	
+	Die Datenpunkte mit der kleinsten Margin werden für das Orakel zur Annotation ausgewählt, weil das Modell hier kaum einen eindeutigen Favoriten hat.
+	
+	
+	\paragraph{Entropy Sampling}
+	Diese Strategie misst die Unsicherheit einer Vorhersage mit der Entropie der vorhergesagten Klassenverteilung \cite{Joshi2009}. Je gleichmäßiger die Verteilung der Wahrscheinlichkeiten über die Klassen, desto höher ist die Entropie. Das bedeutet, das Modell kann sich nicht auf eine Klasse festlegen und ist somit sehr unsicher. Dort lernt das Modell am meisten hinzu, weil es die Entscheidung offensichtlich kaum getroffen hat.
+	
+	\textbf{Beispiel:}  
+	Betrachte ein Klassifikationsproblem mit drei möglichen Klassen $A, B, C$. Ein Modell gibt für eine Instanz folgende Wahrscheinlichkeiten aus:
+	
+	\begin{equation}
+		P(A) = 0{,}33, \quad P(B) = 0{,}34, \quad P(C) = 0{,}33
+	\end{equation}
+	
+	Die Wahrscheinlichkeiten sind nahezu gleichmäßig verteilt. Dies führt zu einer hohen Entropie, was darauf hindeutet, dass das Modell sehr unsicher bezüglich der richtigen Klasse ist. Ein Datenpunkt mit solch hoher Entropie wäre für Entropy Sampling besonders interessant, um durch Hinzufügen dieses unsicheren Datenpunktes zum Trainingssatz die Entscheidungskompetenz des Modells zu verbessern.
+	
+	Die Entropie $H$ berechnet sich dabei wie folgt:
+	
+	\begin{equation}
+		H = - \sum_{i} P(i) \cdot \log\left(P(i)\right)
+	\end{equation}
+	
+	Konkret ergibt sich für das obige Beispiel:
+	
+	\begin{equation}
+		H = -\left[0{,}33 \cdot \log(0{,}33) + 0{,}34 \cdot \log(0{,}34) + 0{,}33 \cdot \log(0{,}33)\right] \approx 1{,}0986
+	\end{equation}
+	
+	Dieser Wert liegt nahe am Maximum (bei drei Klassen maximal $\log(3) \approx 1{,}0986$), was die hohe Unsicherheit verdeutlicht.
+	% Uncomment the following two lines if you want to have a bibliography
+	
+	\subsubsection{Committee-basiertes Sampling im Active Learning für Bildklassifikation}
+	Ein Komitee aus mehreren Modellen wird gebildet, um informative, unbeschriftete Beispiele auszuwählen. Zunächst werden alle Modelle des Komitees auf dem aktuell verfügbaren, beschrifteten Datensatz trainiert. Anschließend wird für jedes unbeschriftete Bild die Vorhersage jedes Komitee-Modells betrachtet.
+	
+	Die zentrale Idee besteht darin, diejenigen Datenpunkte auszuwählen, bei denen sich die Modelle am stärksten uneinig sind, da Uneinigkeit auf eine hohe Unsicherheit hindeutet \cite{Freund1997}.
+	
+	Die Uneinigkeit kann beispielsweise anhand der Varianz oder Entropie der Vorhersagen gemessen werden:
+	
+	\begin{itemize}
+		\item \textbf{Varianz-basierte Uneinigkeit:}
+		\begin{equation}
+			\text{Uneinigkeit}_{\text{Var}}(x) = \frac{1}{M} \sum_{m=1}^{M}(P_m(x) - \bar{P}(x))^2
+		\end{equation}
+		wobei $M$ die Anzahl der Modelle im Komitee, $P_m(x)$ die Vorhersagewahrscheinlichkeit von Modell $m$ für den Datenpunkt $x$ und $\bar{P}(x)$ die durchschnittliche Vorhersagewahrscheinlichkeit über alle Modelle ist.
+		
+		\item \textbf{Entropie-basierte Uneinigkeit:}
+		\begin{equation}
+			\text{Uneinigkeit}_{\text{Entropie}}(x) = - \sum_{i} \bar{P}(y_i|x) \cdot \log\bar{P}(y_i|x)
+		\end{equation}
+		wobei $\bar{P}(y_i|x)$ der Mittelwert der vorhergesagten Wahrscheinlichkeiten für Klasse $y_i$ über alle Modelle ist.
+	\end{itemize}
+	
+	\subsubsection{Expected Error Reduction}
+	Bei der \textit{Expected Error Reduction}-Methode im Active Learning wird dasjenige unbeschriftete Beispiel aus dem Pool ausgewählt, dessen Hinzunahme – nachdem es vom Orakel korrekt beschriftet und dem Training hinzugefügt wurde – den erwarteten Fehler des Klassifikationsmodells am stärksten verringert.
+	
+	Die Auswahl erfolgt formal nach folgendem Kriterium:
+	
+	\begin{equation}
+		x^* = \underset{x \in \mathrm{Pool}}{\argmax} \; \mathbb{E}\left[\mathrm{Error}(\mathcal{M}_{\mathrm{neu}}) - \mathrm{Error}(\mathcal{M}_{\mathrm{alt}})\right]
+	\end{equation}
+	
+	
+	
+	Dabei bezeichnet $\mathcal{M}_{\text{neu}}$ das Modell nach Hinzufügen des neuen Punktes $x$ und $\mathcal{M}_{\text{alt}}$ das ursprüngliche Modell.
+	
+	Diese Strategie ist theoretisch gut fundiert, da sie direkt auf die Reduktion des generalisierten Fehlermaßes abzielt. Allerdings ist sie oft rechenaufwendig, weil für jeden Kandidaten das Modell neu trainiert und die Fehleränderung erneut abgeschätzt werden muss \cite{Mussmann2022}.
+	
+	
+	\subsubsection{Bayesian Optimization}
+	Bayesian Optimization hilft beim Active Learning, indem gezielt Bilder ausgewählt werden, die für das Modell besonders nützlich sind. Dazu nutzt man ein spezielles Hilfsmodell (ein Bayessches Surrogatmodell, z.~B. einen Gaussian Process oder ein neuronales Netz), das für jedes unbeschriftete Bild abschätzt, wie unsicher sich das Modell bei der Vorhersage ist oder wie viel neue Information das Label liefern könnte.
+	
+	Formal betrachtet nutzt man dafür eine Akquisitionsfunktion $\alpha(x)$, welche für jedes Bild $x$ bewertet, wie groß der erwartete Informationsgewinn oder die Unsicherheit ist:
+	
+	\begin{equation}
+		x^* = \underset{x \in \mathrm{Pool}}{\argmax} \; \alpha(x)
+	\end{equation}
+	
+	Typische Akquisitionsfunktionen sind beispielsweise:
+	
+	\begin{itemize}
+		\item \textbf{Expected Improvement (EI)}:
+		\begin{equation}
+			\mathrm{EI}(x) = \mathbb{E}\left[\max\left(0, f(x) - f(x^+)\right)\right]
+		\end{equation}
+		wobei $f(x^+)$ die beste bisher beobachtete Performance beschreibt.
+		
+		\item \textbf{Upper Confidence Bound (UCB)}:
+		\begin{equation}
+			\mathrm{UCB}(x) = \mu(x) + \kappa \cdot \sigma(x)
+		\end{equation}
+		wobei $\mu(x)$ die geschätzte mittlere Performance und $\sigma(x)$ die Unsicherheit der Schätzung ist.
+	\end{itemize}
+	
+	Das ausgewählte Bild wird anschließend gelabelt, wodurch das Modell schneller und mit weniger Labels lernt, gute Vorhersagen zu treffen \cite{Gal2017}.
+	
+	
+	\subsubsection{Ranked Batch-Mode Sampling}
+	Ranked Batch-Mode Sampling ist eine Active-Learning-Methode, die unbeschriftete Daten (z.~B. Bilder) nach ihrem geschätzten Nutzen ordnet, um effizient mehrere gleichzeitig zur Beschriftung auszuwählen. Dabei kombiniert sie zwei Kriterien:
+	
+	\begin{enumerate}
+		\item Unsicherheit des Modells bei der Vorhersage.
+		\item Diversität (Vielfalt) der ausgewählten Bilder.
+	\end{enumerate}
+	
+	Formal ergibt sich der Auswahlprozess durch das Sortieren aller Kandidatenbilder $x$ nach einer Bewertungsfunktion $U(x)$, die Unsicherheit und Diversität kombiniert:
+	
+	\begin{equation}
+		U(x) = \alpha \cdot \text{Unsicherheit}(x) + (1 - \alpha) \cdot \text{Diversität}(x)
+	\end{equation}
+	
+	Dabei ist $\alpha \in [0,1]$ ein Gewichtungsparameter, der die Balance zwischen Unsicherheit und Diversität steuert.
+	
+	Anschließend werden die top-$N$ Bilder auf Basis dieser Rangliste ausgewählt. Dadurch spart man Zeit und Aufwand, da das Modell nicht ständig neu trainiert werden muss, und gleichzeitig wird verhindert, dass ähnliche Bilder mehrfach ausgewählt werden \cite{Cardoso2017}.
+	
+	
+	\subsubsection{Information Density}
+	Die \textit{Information Density}-Methode ist ein Active-Learning-Ansatz, der bei der Auswahl unbeschrifteter Bilder zwei Kriterien kombiniert:
+	
+	\begin{enumerate}
+		\item Die Unsicherheit des Modells bei der Klassifizierung eines Bildes.
+		\item Die Repräsentativität bzw. Dichte des Bildes in Bezug auf alle anderen unbeschrifteten Daten.
+	\end{enumerate}
+	
+	Konkret erhält jedes unklassifizierte Bild einen Wert für die Vorhersageunsicherheit (z.~B. basierend auf Entropie oder Konfidenz) und einen Wert dafür, wie ähnlich dieses Bild den übrigen unbezeichneten Bildern ist (etwa gemessen als durchschnittliche Ähnlichkeit im Merkmalsraum zu den anderen Datenpunkten). Multiplikativ kombiniert man diese beiden Werte zu einer Gesamtwertung, der \textit{Informationsdichte}:
+	
+	\begin{equation}
+		\text{InformationDensity}(x) = \text{Unsicherheit}(x) \times \text{Dichte}(x)
+	\end{equation}
+	
+	Dadurch werden bevorzugt solche Bilder ausgewählt, die nicht nur schwer für das aktuelle Modell zu klassifizieren sind, sondern auch stellvertretend für viele andere noch unbezeichnete Bilder stehen.
+	
+	\textbf{Nutzen gegenüber rein unsicherheitsbasierten Verfahren:}
+	
+	Im Unterschied zu einfachen Unsicherheits-Strategien, die oft Ausreißer als nächste Beispiele vorschlagen, fokussiert die Informationsdichte-Methode auf informative und repräsentative Instanzen. Das bedeutet, sie vermeidet es, ihr Labeling-Budget an seltene Sonderfälle zu verschwenden. Stattdessen wählt sie Bilder aus dichten Regionen des Datenraums, was dem Klassifizierungsmodell mehr allgemeingültige Informationen liefert. In der Praxis führt dies meist zu schnellerer Verbesserung der Modellgenauigkeit mit weniger gelabelten Daten, da die ausgewählten Beispiele die Verteilung der Daten besser abdecken und somit die Generalisierungsleistung erhöhen \cite{Gu2015}.
+	
+	\subsection{Herausforderungen durch Klassenungleichgewicht beim Active Learning}
+	
+	\subsubsection{Modellverzerrung}
+	Bei stark unbalancierter Klassenverteilung lernt das Modell überwiegend die Merkmale der dominanten Klasse. Unterrepräsentierte Klassen werden vernachlässigt, wodurch das Modell verzerrt wird und neue Beispiele tendenziell der Mehrheitsklasse zugeordnet werden. In der automatischen Erkennung von Dachmaterialien bedeutet dies beispielsweise, dass seltene Dachtypen, wie Reetdächer oder Solaranlagen, häufig fälschlicherweise als der häufigste Materialtyp klassifiziert werden\cite{Jin2022}.
+	
+	\subsubsection{Selektionsbias im aktiven Lernen}
+	Viele Active-Learning-Strategien, insbesondere unsicherheitsbasiertes Sampling, berücksichtigen die Klassenverteilung nicht ausreichend. Sie neigen dazu, bevorzugt Bilder der häufig vorkommenden Klassen für Annotationen auszuwählen und seltene Klassen zu vernachlässigen. Dies führt dazu, dass der annotierte Datensatz im Active-Learning-Zyklus entweder unausgewogen bleibt oder sich sogar weiter verschlechtert, was die Lernfähigkeit und somit die Verbesserung der Erkennung von Minderheitsklassen beeinträchtigt\cite{Jin2022}.
+	
+	\subsubsection{Verminderte Klassifikationseffektivität}
+	Aufgrund der Verzerrung des Modells und der unausgewogenen Stichprobenauswahl verschlechtert sich die Klassifikationsleistung für Minderheitsklassen. Während für die Mehrheitklasse oft hohe Gesamtgenauigkeiten erreicht werden, versagt das Modell regelmäßig bei der korrekten Identifikation seltener Klassen, was sich in geringen Recall- und Präzisionswerten niederschlägt. Eine wissenschaftliche Studie bestätigt, dass traditionelle Active-Learning-Methoden bei Bildklassifikationsaufgaben mit unbalancierten Datensätzen aufgrund ignorierter Verteilungsungleichgewichte deutlich an Effektivität einbüßen \cite{Jin2022}.
+	
+	\section{Merkmale zur Klassifikation von Dachmaterialien in Luftbildern}
+	Typischerweise werden in Luftbildaufnahmen die folgenden Merkmalsarten herangezogen, um unterschiedliche Dachmaterialien zu erkennen:
+	
+	\subsection{Farbmerkmale}
+	Charakteristische Farbwerte oder -verteilungen des Daches (z.\,B. rote Ziegeldächer vs. graue Metall- oder Betondächer) liefern wichtige Hinweise auf das Material\cite{Kim2021}.
+	
+	\subsection{Texturmerkmale}
+	Die Oberflächenstruktur eines Daches (rau vs. glatt) und repetitive Muster (etwa Ziegel- oder Schindelmuster) werden über Textur-Features erfasst. Solche Merkmale können beispielsweise durch statistische Kennzahlen (Grauwert-Kooccurence-Matrizen, lokale Binärmuster etc.) beschrieben werden\cite{Kim2021}.
+	
+	\subsection{Spektrale Merkmale}
+	Multispektrale oder hyperspektrale Luftbilder erlauben die Nutzung zusätzlicher Wellenlängenbänder (etwa Nahinfrarot), um materialspezifische Reflexionseigenschaften zu erkennen. Spektrale Signaturen und Indizes (z.\,B. Vegetationsindex NDVI zur Erkennung von bewachsenen Gründächern) helfen, Materialien durch ihre charakteristischen Absorptions- und Reflexionseigenschaften zu unterscheiden\cite{Kim2021}.
+	
+	\subsection{Geometrisch-strukturelle Merkmale}
+	Form und Struktur der Dachflächen (z.\,B. Flachdach, Satteldach), Kanten und Konturen sowie das Muster von Dachaufbauten gehören ebenfalls zu den nützlichen Features. Auch räumlicher Kontext (Größe des Gebäudes, Umgebung) kann indirekt auf das Material hinweisen (etwa Industriehalle mit Blechdach vs. Wohnhaus mit Ziegeln)\cite{Kim2021}.
+	
+	\subsection{Merkmalsextraktion mittels CNN}
+	Moderne Bildklassifikationsverfahren wie Convolutional Neural Networks (CNNs) können diese Merkmale direkt aus den Bildern automatisch lernen und kombinieren. Ein CNN extrahiert in frühen Schichten zumeist einfache Kanten- und Texturmerkmale, in mittleren Schichten komplexere Muster und Farbzusammenhänge und in späten Schichten hochabstrakte Merkmale, die mit Dachmaterial-Kategorien korrelieren. Auf diese Weise entfällt die manuelle Merkmalsdefinition weitgehend, und das Netzwerk lernt aus RGB- und ggf. zusätzlichen Spektralbändern selbstständig die optimalen Merkmalskombinationen für die Klassifikation \cite{Kim2021}.
+	
+	Im Kontext von aktivem Lernen und automatischer Annotation werden diese Verfahren weiter verbessert: Beim aktiven Lernen wählt das Modell gezielt die informativsten oder unsicher klassifizierten Dachflächen aus, die dann vom Menschen nachannotiert werden. Dadurch erhält das CNN effizient zusätzliche Trainingsdaten gerade für schwierige Fälle, was die Erkennungsleistung steigert. Eine automatische Annotation großer Luftbilddatensätze kann z.\,B. durch vorhandene Geodaten (etwa Gebäude-Kataster mit bekannten Dachmaterialien) oder durch vortrainierte Modelle erfolgen, um dem Netzwerk initial Trainingsbeispiele zu liefern. Diese Kombination aus reichhaltigen Merkmalen, CNN-basiertem Merkmalslernen sowie aktivem Lernen für die iterative Datenannotation führt zu immer präziseren Ergebnissen in der Dachmaterialklassifikation \cite{Kim2021}.
+	
+\section{Einfaches Active-Learning-Beispiel mit modAL}
+
+Der folgende Python-Code zeigt, wie man mit der Bibliothek \texttt{modAL} \cite{Danka2018} ganz einfach aktives Lernen durchführt. Wir nutzen dafür den bekannten Iris-Datensatz und den Random-Forest-Klassifikator. Die verwendete \emph{Query-Strategie} bestimmt, welche Daten als nächstes beschriftet werden sollen. In diesem Beispiel nutzen wir \texttt{uncertainty\_sampling}, was bedeutet, dass jeweils die Daten ausgewählt werden, bei denen sich das Modell am unsichersten ist. Diese Strategie lässt sich leicht durch eine andere Funktion ersetzen.
+
+\begin{lstlisting}
+	# Notwendige Bibliotheken importieren
+	import numpy as np
+	from sklearn.datasets import load_iris
+	from sklearn.ensemble import RandomForestClassifier
+	from modAL.models import ActiveLearner
+	from modAL.uncertainty import uncertainty_sampling
+	
+	# Iris-Daten laden und Start-Datensatz festlegen
+	X, y = load_iris(return_X_y=True)
+	initial_idx = np.random.choice(range(len(X)), size=5, replace=False)
+	X_initial, y_initial = X[initial_idx], y[initial_idx]
+	
+	# Restlicher Pool von unlabeled Daten
+	X_pool = np.delete(X, initial_idx, axis=0)
+	y_pool = np.delete(y, initial_idx, axis=0)
+	
+	\# ActiveLearner mit RandomForest und verwendeter Query-Strategie
+	learner = ActiveLearner(
+	estimator=RandomForestClassifier(),
+	query_strategy=uncertainty_sampling,
+	X_training=X_initial,
+	y_training=y_initial
+	)
+	
+	\# 3 unsicherste Datenpunkte aus dem unlabeled Pool filtern
+	query_idx, query_instances = learner.query(X_pool, n_instances=3)
+	
+	# (Simulierte) Annotation (hier mit bekannten Labels)
+	learner.teach(X=X_pool[query_idx], y=y_pool[query_idx])
+	
+	# Annotierte Daten aus dem unlabeled Pool entfernen
+	X_pool = np.delete(X_pool, query_idx, axis=0)
+	y_pool = np.delete(y_pool, query_idx, axis=0)
+\end{lstlisting}
+
+\paragraph{Austausch der Query-Strategie:}
+Um eine andere Query-Strategie zu verwenden, tausche einfach \texttt{uncertainty\_sampling} gegen eine andere Strategie-Funktion aus, zum Beispiel \texttt{random\_sampling} oder \texttt{entropy\_sampling}.
+
+
+	
+	
+	
+	
+	\printbibliography
+\end{document}

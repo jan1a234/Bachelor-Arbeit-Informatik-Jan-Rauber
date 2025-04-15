@@ -1,0 +1,1065 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{Breiman2001}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=132b7100417675d55d5d4d8b244f7a34}{%
+           family={Breiman},
+           familyi={B\bibinitperiod},
+           given={Leo},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{fullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{fullhashraw}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{bibnamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorbibnamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authornamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorfullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorfullhashraw}{132b7100417675d55d5d4d8b244f7a34}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{issn}{0885-6125}
+      \field{journaltitle}{Machine Learning}
+      \field{number}{1}
+      \field{volume}{45}
+      \field{year}{2001}
+      \field{pages}{5\bibrangedash 32}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1023/a:1010933404324
+      \endverb
+    \endentry
+    \entry{Bridle1990}{inbook}{}{}
+      \name{author}{1}{}{%
+        {{hash=c10596a03b22bcd5c707c616753de154}{%
+           family={Bridle},
+           familyi={B\bibinitperiod},
+           given={John\bibnamedelima S.},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{c10596a03b22bcd5c707c616753de154}
+      \strng{fullhash}{c10596a03b22bcd5c707c616753de154}
+      \strng{fullhashraw}{c10596a03b22bcd5c707c616753de154}
+      \strng{bibnamehash}{c10596a03b22bcd5c707c616753de154}
+      \strng{authorbibnamehash}{c10596a03b22bcd5c707c616753de154}
+      \strng{authornamehash}{c10596a03b22bcd5c707c616753de154}
+      \strng{authorfullhash}{c10596a03b22bcd5c707c616753de154}
+      \strng{authorfullhashraw}{c10596a03b22bcd5c707c616753de154}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Neurocomputing}
+      \field{isbn}{9783642761539}
+      \field{title}{Probabilistic Interpretation of Feedforward Classification Network Outputs, with Relationships to Statistical Pattern Recognition}
+      \field{year}{1990}
+      \field{pages}{227\bibrangedash 236}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1007/978-3-642-76153-9_28
+      \endverb
+    \endentry
+    \entry{Cardoso2017}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=78e3358576f7d9eecece59d2f7e358a0}{%
+           family={Cardoso},
+           familyi={C\bibinitperiod},
+           given={Thiago\bibnamedelima N.C.},
+           giveni={T\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=f7ca73419df1d9e513e080a531e12c26}{%
+           family={Silva},
+           familyi={S\bibinitperiod},
+           given={Rodrigo\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=ce0ed8c5b7f7c218ed8405805f31e23e}{%
+           family={Canuto},
+           familyi={C\bibinitperiod},
+           given={Sérgio},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d1c0317a2395ccb8a873d276f7a87f26}{%
+           family={Moro},
+           familyi={M\bibinitperiod},
+           given={Mirella\bibnamedelima M.},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=ccb11337ae9b4abb2fc2e58eeb352d46}{%
+           family={Gonçalves},
+           familyi={G\bibinitperiod},
+           given={Marcos\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{1efff74aeec97c2becdc3291bb371afd}
+      \strng{fullhash}{85848f8a803e5ac084c0f654b6d6f762}
+      \strng{fullhashraw}{85848f8a803e5ac084c0f654b6d6f762}
+      \strng{bibnamehash}{1efff74aeec97c2becdc3291bb371afd}
+      \strng{authorbibnamehash}{1efff74aeec97c2becdc3291bb371afd}
+      \strng{authornamehash}{1efff74aeec97c2becdc3291bb371afd}
+      \strng{authorfullhash}{85848f8a803e5ac084c0f654b6d6f762}
+      \strng{authorfullhashraw}{85848f8a803e5ac084c0f654b6d6f762}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0020-0255}
+      \field{journaltitle}{Information Sciences}
+      \field{month}{2}
+      \field{title}{Ranked batch-mode active learning}
+      \field{volume}{379}
+      \field{year}{2017}
+      \field{pages}{313\bibrangedash 337}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1016/j.ins.2016.10.037
+      \endverb
+    \endentry
+    \entry{Cortes1995}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=17acda211a651e90e228f1776ee07818}{%
+           family={Cortes},
+           familyi={C\bibinitperiod},
+           given={Corinna},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c2b3e05872463585b4be6aab10d10d63}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{4c67d5268f413e83454c8adc14ab43c3}
+      \strng{fullhash}{4c67d5268f413e83454c8adc14ab43c3}
+      \strng{fullhashraw}{4c67d5268f413e83454c8adc14ab43c3}
+      \strng{bibnamehash}{4c67d5268f413e83454c8adc14ab43c3}
+      \strng{authorbibnamehash}{4c67d5268f413e83454c8adc14ab43c3}
+      \strng{authornamehash}{4c67d5268f413e83454c8adc14ab43c3}
+      \strng{authorfullhash}{4c67d5268f413e83454c8adc14ab43c3}
+      \strng{authorfullhashraw}{4c67d5268f413e83454c8adc14ab43c3}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1573-0565}
+      \field{journaltitle}{Machine Learning}
+      \field{month}{9}
+      \field{number}{3}
+      \field{title}{Support-vector networks}
+      \field{volume}{20}
+      \field{year}{1995}
+      \field{pages}{273\bibrangedash 297}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1007/bf00994018
+      \endverb
+    \endentry
+    \entry{Cover1967}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e05a925b2cfe910a6897d43f9ba39978}{%
+           family={Cover},
+           familyi={C\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=9a57c30a474f492865fd485f0f8748f5}{%
+           family={Hart},
+           familyi={H\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Institute of Electrical}%
+        {Electronics Engineers (IEEE)}%
+      }
+      \strng{namehash}{79f254d94cf7ed6ac9aed53475e87a36}
+      \strng{fullhash}{79f254d94cf7ed6ac9aed53475e87a36}
+      \strng{fullhashraw}{79f254d94cf7ed6ac9aed53475e87a36}
+      \strng{bibnamehash}{79f254d94cf7ed6ac9aed53475e87a36}
+      \strng{authorbibnamehash}{79f254d94cf7ed6ac9aed53475e87a36}
+      \strng{authornamehash}{79f254d94cf7ed6ac9aed53475e87a36}
+      \strng{authorfullhash}{79f254d94cf7ed6ac9aed53475e87a36}
+      \strng{authorfullhashraw}{79f254d94cf7ed6ac9aed53475e87a36}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1557-9654}
+      \field{journaltitle}{IEEE Transactions on Information Theory}
+      \field{month}{1}
+      \field{number}{1}
+      \field{title}{Nearest neighbor pattern classification}
+      \field{volume}{13}
+      \field{year}{1967}
+      \field{pages}{21\bibrangedash 27}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/tit.1967.1053964
+      \endverb
+    \endentry
+    \entry{Cox1958}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=2d4d0b24655232a7821096d23c2354b5}{%
+           family={Cox},
+           familyi={C\bibinitperiod},
+           given={D.\bibnamedelimi R.},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press (OUP)}%
+      }
+      \strng{namehash}{2d4d0b24655232a7821096d23c2354b5}
+      \strng{fullhash}{2d4d0b24655232a7821096d23c2354b5}
+      \strng{fullhashraw}{2d4d0b24655232a7821096d23c2354b5}
+      \strng{bibnamehash}{2d4d0b24655232a7821096d23c2354b5}
+      \strng{authorbibnamehash}{2d4d0b24655232a7821096d23c2354b5}
+      \strng{authornamehash}{2d4d0b24655232a7821096d23c2354b5}
+      \strng{authorfullhash}{2d4d0b24655232a7821096d23c2354b5}
+      \strng{authorfullhashraw}{2d4d0b24655232a7821096d23c2354b5}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1467-9868}
+      \field{journaltitle}{Journal of the Royal Statistical Society Series B: Statistical Methodology}
+      \field{month}{7}
+      \field{number}{2}
+      \field{title}{The Regression Analysis of Binary Sequences}
+      \field{volume}{20}
+      \field{year}{1958}
+      \field{pages}{215\bibrangedash 232}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1111/j.2517-6161.1958.tb00292.x
+      \endverb
+    \endentry
+    \entry{Danka2018}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=6be58f0dc5fd055e35e960950c7f793b}{%
+           family={Danka},
+           familyi={D\bibinitperiod},
+           given={Tivadar},
+           giveni={T\bibinitperiod}}}%
+        {{hash=fa28091fb5857f92f57e4f7d6979cb91}{%
+           family={Horvath},
+           familyi={H\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{423f3ffe0964998094b001d399d1cd05}
+      \strng{fullhash}{423f3ffe0964998094b001d399d1cd05}
+      \strng{fullhashraw}{423f3ffe0964998094b001d399d1cd05}
+      \strng{bibnamehash}{423f3ffe0964998094b001d399d1cd05}
+      \strng{authorbibnamehash}{423f3ffe0964998094b001d399d1cd05}
+      \strng{authornamehash}{423f3ffe0964998094b001d399d1cd05}
+      \strng{authorfullhash}{423f3ffe0964998094b001d399d1cd05}
+      \strng{authorfullhashraw}{423f3ffe0964998094b001d399d1cd05}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{modAL: A modular active learning framework for Python}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.48550/ARXIV.1805.00979
+      \endverb
+      \keyw{Machine Learning (cs.LG),Machine Learning (stat.ML),FOS: Computer and information sciences,FOS: Computer and information sciences}
+    \endentry
+    \entry{Dreiseitl2002}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=678b952300ffa50671e695cb4b4d2cdb}{%
+           family={Dreiseitl},
+           familyi={D\bibinitperiod},
+           given={Stephan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=dc4eda88319068b43bdb13c8273a1671}{%
+           family={Ohno-Machado},
+           familyi={O\bibinithyphendelim M\bibinitperiod},
+           given={Lucila},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{45856eb77a171d82c68b8f3da2c0aa5e}
+      \strng{fullhash}{45856eb77a171d82c68b8f3da2c0aa5e}
+      \strng{fullhashraw}{45856eb77a171d82c68b8f3da2c0aa5e}
+      \strng{bibnamehash}{45856eb77a171d82c68b8f3da2c0aa5e}
+      \strng{authorbibnamehash}{45856eb77a171d82c68b8f3da2c0aa5e}
+      \strng{authornamehash}{45856eb77a171d82c68b8f3da2c0aa5e}
+      \strng{authorfullhash}{45856eb77a171d82c68b8f3da2c0aa5e}
+      \strng{authorfullhashraw}{45856eb77a171d82c68b8f3da2c0aa5e}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1532-0464}
+      \field{journaltitle}{Journal of Biomedical Informatics}
+      \field{month}{10}
+      \field{number}{5–6}
+      \field{title}{Logistic regression and artificial neural network classification models: a methodology review}
+      \field{volume}{35}
+      \field{year}{2002}
+      \field{pages}{352\bibrangedash 359}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/s1532-0464(03)00034-0
+      \endverb
+    \endentry
+    \entry{Fischer1999}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=3f61fb26219e72a888dd3e4c0db570a5}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Vieweg+Teubner Verlag}%
+      }
+      \strng{namehash}{3f61fb26219e72a888dd3e4c0db570a5}
+      \strng{fullhash}{3f61fb26219e72a888dd3e4c0db570a5}
+      \strng{fullhashraw}{3f61fb26219e72a888dd3e4c0db570a5}
+      \strng{bibnamehash}{3f61fb26219e72a888dd3e4c0db570a5}
+      \strng{authorbibnamehash}{3f61fb26219e72a888dd3e4c0db570a5}
+      \strng{authornamehash}{3f61fb26219e72a888dd3e4c0db570a5}
+      \strng{authorfullhash}{3f61fb26219e72a888dd3e4c0db570a5}
+      \strng{authorfullhashraw}{3f61fb26219e72a888dd3e4c0db570a5}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9783663119562}
+      \field{issn}{1615-5432}
+      \field{journaltitle}{Leitfäden der Informatik}
+      \field{title}{Algorithmisches Lernen}
+      \field{year}{1999}
+      \verb{doi}
+      \verb 10.1007/978-3-663-11956-2
+      \endverb
+    \endentry
+    \entry{Freund1997}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=9dae54fc70ef3090ef42046937183be2}{%
+           family={Freund},
+           familyi={F\bibinitperiod},
+           given={Yoav},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=a5f8d3905fcb2b6e66a95957edf6d4da}{%
+           family={Seung},
+           familyi={S\bibinitperiod},
+           given={H.\bibnamedelimi Sebastian},
+           giveni={H\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=1997f155fea3115ea9bb8b709f046a08}{%
+           family={Shamir},
+           familyi={S\bibinitperiod},
+           given={Eli},
+           giveni={E\bibinitperiod}}}%
+        {{hash=4e62b78dfc3dad1032ffab359db7276b}{%
+           family={Tishby},
+           familyi={T\bibinitperiod},
+           given={Naftali},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{1054e83dd8410947dc39057c03f6e214}
+      \strng{fullhash}{e816d5e5b015a7638357fc684e18a775}
+      \strng{fullhashraw}{e816d5e5b015a7638357fc684e18a775}
+      \strng{bibnamehash}{1054e83dd8410947dc39057c03f6e214}
+      \strng{authorbibnamehash}{1054e83dd8410947dc39057c03f6e214}
+      \strng{authornamehash}{1054e83dd8410947dc39057c03f6e214}
+      \strng{authorfullhash}{e816d5e5b015a7638357fc684e18a775}
+      \strng{authorfullhashraw}{e816d5e5b015a7638357fc684e18a775}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{issn}{0885-6125}
+      \field{journaltitle}{Machine Learning}
+      \field{number}{2/3}
+      \field{volume}{28}
+      \field{year}{1997}
+      \field{pages}{133\bibrangedash 168}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.1023/a:1007330508534
+      \endverb
+    \endentry
+    \entry{Gal2017}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=d4f394bd4030e20e7b1399e0abe7dc6a}{%
+           family={Gal},
+           familyi={G\bibinitperiod},
+           given={Yarin},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=227ede2745d597df1564e6adddb6ee97}{%
+           family={Islam},
+           familyi={I\bibinitperiod},
+           given={Riashat},
+           giveni={R\bibinitperiod}}}%
+        {{hash=bf5cf30deddddad00a6341ad7a414445}{%
+           family={Ghahramani},
+           familyi={G\bibinitperiod},
+           given={Zoubin},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{c07ca31992ac0487e273496b830428d7}
+      \strng{fullhash}{c07ca31992ac0487e273496b830428d7}
+      \strng{fullhashraw}{c07ca31992ac0487e273496b830428d7}
+      \strng{bibnamehash}{c07ca31992ac0487e273496b830428d7}
+      \strng{authorbibnamehash}{c07ca31992ac0487e273496b830428d7}
+      \strng{authornamehash}{c07ca31992ac0487e273496b830428d7}
+      \strng{authorfullhash}{c07ca31992ac0487e273496b830428d7}
+      \strng{authorfullhashraw}{c07ca31992ac0487e273496b830428d7}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Deep Bayesian Active Learning with Image Data}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.48550/ARXIV.1703.02910
+      \endverb
+      \keyw{Machine Learning (cs.LG),Computer Vision and Pattern Recognition (cs.CV),Machine Learning (stat.ML),FOS: Computer and information sciences,FOS: Computer and information sciences}
+    \endentry
+    \entry{Gohari2023}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=19f57aa3c79a59e0ad71e35d79274acc}{%
+           family={Gohari},
+           familyi={G\bibinitperiod},
+           given={Kimiya},
+           giveni={K\bibinitperiod}}}%
+        {{hash=0036d6ef8f9a65b596717d4e46fbb3eb}{%
+           family={Kazemnejad},
+           familyi={K\bibinitperiod},
+           given={Anoshirvan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a6e91d543335389aee5fc99c30f4bd53}{%
+           family={Mohammadi},
+           familyi={M\bibinitperiod},
+           given={Marjan},
+           giveni={M\bibinitperiod}}}%
+        {{hash=925a2a050ab58a6940c8cc684f4bee42}{%
+           family={Eskandari},
+           familyi={E\bibinitperiod},
+           given={Farzad},
+           giveni={F\bibinitperiod}}}%
+        {{hash=958184d49474760088917451bc1e3d75}{%
+           family={Saberi},
+           familyi={S\bibinitperiod},
+           given={Samaneh},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d739e87c9137a2dadc76c71b84d1a3f3}{%
+           family={Esmaieli},
+           familyi={E\bibinitperiod},
+           given={Maryam},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f6da1da3aa67403fb93b6b684ba95bb4}{%
+           family={Sheidaei},
+           familyi={S\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{558abaaa07102c4e7176887f9a27b3aa}
+      \strng{fullhash}{eb466d47b8b910a82ebd4d93ca4b02ab}
+      \strng{fullhashraw}{eb466d47b8b910a82ebd4d93ca4b02ab}
+      \strng{bibnamehash}{558abaaa07102c4e7176887f9a27b3aa}
+      \strng{authorbibnamehash}{558abaaa07102c4e7176887f9a27b3aa}
+      \strng{authornamehash}{558abaaa07102c4e7176887f9a27b3aa}
+      \strng{authorfullhash}{eb466d47b8b910a82ebd4d93ca4b02ab}
+      \strng{authorfullhashraw}{eb466d47b8b910a82ebd4d93ca4b02ab}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1471-2288}
+      \field{journaltitle}{BMC Medical Research Methodology}
+      \field{month}{8}
+      \field{number}{1}
+      \field{title}{A Bayesian latent class extension of naive Bayesian classifier and its application to the classification of gastric cancer patients}
+      \field{volume}{23}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.1186/s12874-023-02013-4
+      \endverb
+    \endentry
+    \entry{Gu2015}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=eb40c59083359055c5fe9d97ee233ca0}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Yingjie},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e8b570fee05236dec5547d520ae7f8fc}{%
+           family={Jin},
+           familyi={J\bibinitperiod},
+           given={Zhong},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=19b7b2acbe7d4c1f8d76218756c9e5ec}{%
+           family={Chiu},
+           familyi={C\bibinitperiod},
+           given={Steve\bibnamedelima C.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Institution of Engineering}%
+        {Technology (IET)}%
+      }
+      \strng{namehash}{743f0009cbbe6715eeafca5251bf1e68}
+      \strng{fullhash}{743f0009cbbe6715eeafca5251bf1e68}
+      \strng{fullhashraw}{743f0009cbbe6715eeafca5251bf1e68}
+      \strng{bibnamehash}{743f0009cbbe6715eeafca5251bf1e68}
+      \strng{authorbibnamehash}{743f0009cbbe6715eeafca5251bf1e68}
+      \strng{authornamehash}{743f0009cbbe6715eeafca5251bf1e68}
+      \strng{authorfullhash}{743f0009cbbe6715eeafca5251bf1e68}
+      \strng{authorfullhashraw}{743f0009cbbe6715eeafca5251bf1e68}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1751-9640}
+      \field{journaltitle}{IET Computer Vision}
+      \field{month}{6}
+      \field{number}{3}
+      \field{title}{Active learning combining uncertainty and diversity for multi‐class image classification}
+      \field{volume}{9}
+      \field{year}{2015}
+      \field{pages}{400\bibrangedash 407}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1049/iet-cvi.2014.0140
+      \endverb
+    \endentry
+    \entry{Jin2022}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=64cbffaa322ecd7ae08ab7b57b9fbdba}{%
+           family={Jin},
+           familyi={J\bibinitperiod},
+           given={Qiuye},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=8a078498c0d2c29b7088c890624a48d5}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Mingzhi},
+           giveni={M\bibinitperiod}}}%
+        {{hash=4ecbdeaec835537d95d1ebf3f676fb38}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Haoran},
+           giveni={H\bibinitperiod}}}%
+        {{hash=3072e3af98ad540cb79482de8676fe08}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Manning},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e67f9b97164c5ea7adce9def7c2e0f89}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Zhijian},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{211f3c628694e139a7180046fcb82edb}
+      \strng{fullhash}{77cdbaf2b095de733a6a131c9689a3c2}
+      \strng{fullhashraw}{77cdbaf2b095de733a6a131c9689a3c2}
+      \strng{bibnamehash}{211f3c628694e139a7180046fcb82edb}
+      \strng{authorbibnamehash}{211f3c628694e139a7180046fcb82edb}
+      \strng{authornamehash}{211f3c628694e139a7180046fcb82edb}
+      \strng{authorfullhash}{77cdbaf2b095de733a6a131c9689a3c2}
+      \strng{authorfullhashraw}{77cdbaf2b095de733a6a131c9689a3c2}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0950-7051}
+      \field{journaltitle}{Knowledge-Based Systems}
+      \field{month}{12}
+      \field{title}{Deep active learning models for imbalanced image classification}
+      \field{volume}{257}
+      \field{year}{2022}
+      \field{pages}{109817}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.knosys.2022.109817
+      \endverb
+    \endentry
+    \entry{Joshi2009}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=4a5fabe25a1d96ab5ff60f4a4c37c286}{%
+           family={Joshi},
+           familyi={J\bibinitperiod},
+           given={Ajay\bibnamedelima J.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=614198715471d146b77068d419298d26}{%
+           family={Porikli},
+           familyi={P\bibinitperiod},
+           given={Fatih},
+           giveni={F\bibinitperiod}}}%
+        {{hash=f669946ecfef095e9e797e86f0030309}{%
+           family={Papanikolopoulos},
+           familyi={P\bibinitperiod},
+           given={Nikolaos},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{a049c949b001a44259ef4dcc4e5f6919}
+      \strng{fullhash}{a049c949b001a44259ef4dcc4e5f6919}
+      \strng{fullhashraw}{a049c949b001a44259ef4dcc4e5f6919}
+      \strng{bibnamehash}{a049c949b001a44259ef4dcc4e5f6919}
+      \strng{authorbibnamehash}{a049c949b001a44259ef4dcc4e5f6919}
+      \strng{authornamehash}{a049c949b001a44259ef4dcc4e5f6919}
+      \strng{authorfullhash}{a049c949b001a44259ef4dcc4e5f6919}
+      \strng{authorfullhashraw}{a049c949b001a44259ef4dcc4e5f6919}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2009 IEEE Conference on Computer Vision and Pattern Recognition}
+      \field{month}{6}
+      \field{title}{Multi-class active learning for image classification}
+      \field{year}{2009}
+      \verb{doi}
+      \verb 10.1109/cvpr.2009.5206627
+      \endverb
+    \endentry
+    \entry{Kim2021}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=1ce7f2d87fbd48c3fdb4fc5d89cd16c4}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Jonguk},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f2acc30e3f7091225b1bdf10efc36378}{%
+           family={Bae},
+           familyi={B\bibinitperiod},
+           given={Hyansu},
+           giveni={H\bibinitperiod}}}%
+        {{hash=372cd4e47dcb5b5bbc9677ae556603ba}{%
+           family={Kang},
+           familyi={K\bibinitperiod},
+           given={Hyunwoo},
+           giveni={H\bibinitperiod}}}%
+        {{hash=eb608715bc0214edf5342205453b5100}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Suk\bibnamedelima Gyu},
+           giveni={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI AG}%
+      }
+      \strng{namehash}{6f932878521e8c16762cc0d5689ce05b}
+      \strng{fullhash}{f51ab2a3a1da0e84f2ff8851dd5fdf51}
+      \strng{fullhashraw}{f51ab2a3a1da0e84f2ff8851dd5fdf51}
+      \strng{bibnamehash}{6f932878521e8c16762cc0d5689ce05b}
+      \strng{authorbibnamehash}{6f932878521e8c16762cc0d5689ce05b}
+      \strng{authornamehash}{6f932878521e8c16762cc0d5689ce05b}
+      \strng{authorfullhash}{f51ab2a3a1da0e84f2ff8851dd5fdf51}
+      \strng{authorfullhashraw}{f51ab2a3a1da0e84f2ff8851dd5fdf51}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2079-9292}
+      \field{journaltitle}{Electronics}
+      \field{month}{7}
+      \field{number}{13}
+      \field{title}{CNN Algorithm for Roof Detection and Material Classification in Satellite Images}
+      \field{volume}{10}
+      \field{year}{2021}
+      \field{pages}{1592}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/electronics10131592
+      \endverb
+    \endentry
+    \entry{LeCun2015}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=6a1aa6b7eab12b931ca7c7e3f927231d}{%
+           family={LeCun},
+           familyi={L\bibinitperiod},
+           given={Yann},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=40a8e4774982146adc2688546f54efb2}{%
+           family={Bengio},
+           familyi={B\bibinitperiod},
+           given={Yoshua},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=9a8750ccdb2a4cf14d2655face1ce016}{%
+           family={Hinton},
+           familyi={H\bibinitperiod},
+           given={Geoffrey},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{c6c75bd00ce5a488e91a749d8383b3df}
+      \strng{fullhash}{c6c75bd00ce5a488e91a749d8383b3df}
+      \strng{fullhashraw}{c6c75bd00ce5a488e91a749d8383b3df}
+      \strng{bibnamehash}{c6c75bd00ce5a488e91a749d8383b3df}
+      \strng{authorbibnamehash}{c6c75bd00ce5a488e91a749d8383b3df}
+      \strng{authornamehash}{c6c75bd00ce5a488e91a749d8383b3df}
+      \strng{authorfullhash}{c6c75bd00ce5a488e91a749d8383b3df}
+      \strng{authorfullhashraw}{c6c75bd00ce5a488e91a749d8383b3df}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1476-4687}
+      \field{journaltitle}{Nature}
+      \field{month}{5}
+      \field{number}{7553}
+      \field{title}{Deep learning}
+      \field{volume}{521}
+      \field{year}{2015}
+      \field{pages}{436\bibrangedash 444}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1038/nature14539
+      \endverb
+    \endentry
+    \entry{Lewis1994}{inbook}{}{}
+      \name{author}{2}{}{%
+        {{hash=870d985358608ff1f593fc41f7b890b6}{%
+           family={Lewis},
+           familyi={L\bibinitperiod},
+           given={David\bibnamedelima D.},
+           giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=2347dfd9dcf20ea2a38d78f8e6c8e8ab}{%
+           family={Gale},
+           familyi={G\bibinitperiod},
+           given={William\bibnamedelima A.},
+           giveni={W\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer London}%
+      }
+      \strng{namehash}{81d3a73a9636eb5007cfd0fffe2df77e}
+      \strng{fullhash}{81d3a73a9636eb5007cfd0fffe2df77e}
+      \strng{fullhashraw}{81d3a73a9636eb5007cfd0fffe2df77e}
+      \strng{bibnamehash}{81d3a73a9636eb5007cfd0fffe2df77e}
+      \strng{authorbibnamehash}{81d3a73a9636eb5007cfd0fffe2df77e}
+      \strng{authornamehash}{81d3a73a9636eb5007cfd0fffe2df77e}
+      \strng{authorfullhash}{81d3a73a9636eb5007cfd0fffe2df77e}
+      \strng{authorfullhashraw}{81d3a73a9636eb5007cfd0fffe2df77e}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{SIGIR ’94}
+      \field{isbn}{9781447120995}
+      \field{title}{A Sequential Algorithm for Training Text Classifiers}
+      \field{year}{1994}
+      \field{pages}{3\bibrangedash 12}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1007/978-1-4471-2099-5_1
+      \endverb
+    \endentry
+    \entry{Lin2007}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=ec4aa4123f07d57016afedecdf45ed9e}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Hsuan-Tien},
+           giveni={H\bibinithyphendelim T\bibinitperiod}}}%
+        {{hash=bb8c32ec740b902c4f066796b083badc}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Chih-Jen},
+           giveni={C\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=6f2352938673b0e58a7bd304feb18216}{%
+           family={Weng},
+           familyi={W\bibinitperiod},
+           given={Ruby\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{6c065ec9d932460a434c31f8dd7e06cc}
+      \strng{fullhash}{6c065ec9d932460a434c31f8dd7e06cc}
+      \strng{fullhashraw}{6c065ec9d932460a434c31f8dd7e06cc}
+      \strng{bibnamehash}{6c065ec9d932460a434c31f8dd7e06cc}
+      \strng{authorbibnamehash}{6c065ec9d932460a434c31f8dd7e06cc}
+      \strng{authornamehash}{6c065ec9d932460a434c31f8dd7e06cc}
+      \strng{authorfullhash}{6c065ec9d932460a434c31f8dd7e06cc}
+      \strng{authorfullhashraw}{6c065ec9d932460a434c31f8dd7e06cc}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1573-0565}
+      \field{journaltitle}{Machine Learning}
+      \field{month}{8}
+      \field{number}{3}
+      \field{title}{A note on Platt’s probabilistic outputs for support vector machines}
+      \field{volume}{68}
+      \field{year}{2007}
+      \field{pages}{267\bibrangedash 276}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1007/s10994-007-5018-6
+      \endverb
+    \endentry
+    \entry{Mussmann2022}{misc}{}{}
+      \name{author}{6}{}{%
+        {{hash=460ee14575a524105899b7d9f4784d30}{%
+           family={Mussmann},
+           familyi={M\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ff4b1b605450de748cf87b7ec8af8fa4}{%
+           family={Reisler},
+           familyi={R\bibinitperiod},
+           given={Julia},
+           giveni={J\bibinitperiod}}}%
+        {{hash=eb97c4bade2cbf972146829286be94bf}{%
+           family={Tsai},
+           familyi={T\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=560ac0e34995bb76b274bb3adc724853}{%
+           family={Mousavi},
+           familyi={M\bibinitperiod},
+           given={Ehsan},
+           giveni={E\bibinitperiod}}}%
+        {{hash=f8ce4562e8e3f1faeabe19f790fb3002}{%
+           family={O'Brien},
+           familyi={O\bibinitperiod},
+           given={Shayne},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6c75df9b672d8e5bb7e99b40aa6501bc}{%
+           family={Goldszmidt},
+           familyi={G\bibinitperiod},
+           given={Moises},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{3a7b920730c9cfc90d4adcc40716c7bf}
+      \strng{fullhash}{327bf82268bd88019403d476384916b7}
+      \strng{fullhashraw}{327bf82268bd88019403d476384916b7}
+      \strng{bibnamehash}{3a7b920730c9cfc90d4adcc40716c7bf}
+      \strng{authorbibnamehash}{3a7b920730c9cfc90d4adcc40716c7bf}
+      \strng{authornamehash}{3a7b920730c9cfc90d4adcc40716c7bf}
+      \strng{authorfullhash}{327bf82268bd88019403d476384916b7}
+      \strng{authorfullhashraw}{327bf82268bd88019403d476384916b7}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Active Learning with Expected Error Reduction}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.48550/ARXIV.2211.09283
+      \endverb
+      \keyw{Machine Learning (cs.LG),FOS: Computer and information sciences,FOS: Computer and information sciences}
+    \endentry
+    \entry{Roeder2013}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=2868082627edf27818c2684024a445a0}{%
+           family={Röder},
+           familyi={R\bibinitperiod},
+           given={Jens},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Heidelberg University Library}%
+      }
+      \strng{namehash}{2868082627edf27818c2684024a445a0}
+      \strng{fullhash}{2868082627edf27818c2684024a445a0}
+      \strng{fullhashraw}{2868082627edf27818c2684024a445a0}
+      \strng{bibnamehash}{2868082627edf27818c2684024a445a0}
+      \strng{authorbibnamehash}{2868082627edf27818c2684024a445a0}
+      \strng{authornamehash}{2868082627edf27818c2684024a445a0}
+      \strng{authorfullhash}{2868082627edf27818c2684024a445a0}
+      \strng{authorfullhashraw}{2868082627edf27818c2684024a445a0}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Active Learning: New Approaches, and Industrial Applications}
+      \field{year}{2013}
+      \verb{doi}
+      \verb 10.11588/HEIDOK.00014379
+      \endverb
+      \keyw{004 Data processing Computer science,500 Natural sciences and mathematics}
+    \endentry
+    \entry{Scheffer2001}{inbook}{}{}
+      \name{author}{3}{}{%
+        {{hash=3a954fc182e5a18b0900ce293c0401ea}{%
+           family={Scheffer},
+           familyi={S\bibinitperiod},
+           given={Tobias},
+           giveni={T\bibinitperiod}}}%
+        {{hash=4926da22eff7b90dc4e3b1e4c051c711}{%
+           family={Decomain},
+           familyi={D\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=9f8e62cad9a584bd2b54a6029652660f}{%
+           family={Wrobel},
+           familyi={W\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{3fc61999602eca4dd64de1b908a8600c}
+      \strng{fullhash}{3fc61999602eca4dd64de1b908a8600c}
+      \strng{fullhashraw}{3fc61999602eca4dd64de1b908a8600c}
+      \strng{bibnamehash}{3fc61999602eca4dd64de1b908a8600c}
+      \strng{authorbibnamehash}{3fc61999602eca4dd64de1b908a8600c}
+      \strng{authornamehash}{3fc61999602eca4dd64de1b908a8600c}
+      \strng{authorfullhash}{3fc61999602eca4dd64de1b908a8600c}
+      \strng{authorfullhashraw}{3fc61999602eca4dd64de1b908a8600c}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Intelligent Data Analysis}
+      \field{isbn}{9783540448167}
+      \field{issn}{0302-9743}
+      \field{title}{Active Hidden Markov Models for Information Extraction}
+      \field{year}{2001}
+      \field{pages}{309\bibrangedash 318}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1007/3-540-44816-0_31
+      \endverb
+    \endentry
+    \entry{Settles2008}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=9941c4d5402b5e6ceeb53599273e07a3}{%
+           family={Settles},
+           familyi={S\bibinitperiod},
+           given={Burr},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fbd15001c622025be930c0fdabc0430d}{%
+           family={Craven},
+           familyi={C\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{ec00bab3f2656eb6733591efcdf88a8c}
+      \strng{fullhash}{ec00bab3f2656eb6733591efcdf88a8c}
+      \strng{fullhashraw}{ec00bab3f2656eb6733591efcdf88a8c}
+      \strng{bibnamehash}{ec00bab3f2656eb6733591efcdf88a8c}
+      \strng{authorbibnamehash}{ec00bab3f2656eb6733591efcdf88a8c}
+      \strng{authornamehash}{ec00bab3f2656eb6733591efcdf88a8c}
+      \strng{authorfullhash}{ec00bab3f2656eb6733591efcdf88a8c}
+      \strng{authorfullhashraw}{ec00bab3f2656eb6733591efcdf88a8c}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the Conference on Empirical Methods in Natural Language Processing - EMNLP ’08}
+      \field{series}{EMNLP ’08}
+      \field{title}{An analysis of active learning strategies for sequence labeling tasks}
+      \field{year}{2008}
+      \field{pages}{1070}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3115/1613715.1613855
+      \endverb
+    \endentry
+    \entry{Tharwat2023}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=8db62a7cd281329eb4a66a0b4b986be8}{%
+           family={Tharwat},
+           familyi={T\bibinitperiod},
+           given={Alaa},
+           giveni={A\bibinitperiod}}}%
+        {{hash=39e3746155c30560bafa318f0e454887}{%
+           family={Schenck},
+           familyi={S\bibinitperiod},
+           given={Wolfram},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MDPI AG}%
+      }
+      \strng{namehash}{dc0a8e4e7df6cd713a6f378c21c0e828}
+      \strng{fullhash}{dc0a8e4e7df6cd713a6f378c21c0e828}
+      \strng{fullhashraw}{dc0a8e4e7df6cd713a6f378c21c0e828}
+      \strng{bibnamehash}{dc0a8e4e7df6cd713a6f378c21c0e828}
+      \strng{authorbibnamehash}{dc0a8e4e7df6cd713a6f378c21c0e828}
+      \strng{authornamehash}{dc0a8e4e7df6cd713a6f378c21c0e828}
+      \strng{authorfullhash}{dc0a8e4e7df6cd713a6f378c21c0e828}
+      \strng{authorfullhashraw}{dc0a8e4e7df6cd713a6f378c21c0e828}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2227-7390}
+      \field{journaltitle}{Mathematics}
+      \field{month}{2}
+      \field{number}{4}
+      \field{title}{A Survey on Active Learning: State-of-the-Art, Practical Challenges and Research Directions}
+      \field{volume}{11}
+      \field{year}{2023}
+      \field{pages}{820}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/math11040820
+      \endverb
+    \endentry
+  \enddatalist
+  \missing{cortes1995support}
+  \missing{zhang2004naive}
+\endrefsection
+\endinput
+
